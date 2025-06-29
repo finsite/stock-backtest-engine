@@ -1,0 +1,22 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stock-backtest-engine
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-org/stock-backtest-engine.git
+    targetRevision: main
+    path: charts/stock-backtest-engine
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
