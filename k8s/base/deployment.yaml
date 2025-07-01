@@ -16,7 +16,7 @@ spec:
         app: stock-backtest-engine
     spec:
       containers:
-      - name: stock-backtest-engine
-        image: stock-backtest-engine:latest
-        ports:
-        - containerPort: 8080
+        - name: stock-backtest-engine
+          image: stock-backtest-engine:latest
+          ports:
+            - containerPort: 8080
