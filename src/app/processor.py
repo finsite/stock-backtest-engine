@@ -1,5 +1,4 @@
-"""
-Processor module for core backtest engine execution.
+"""Processor module for core backtest engine execution.
 
 This module validates incoming backtest job requests and simulates execution.
 In a real implementation, this would run a backtest loop over historical data.
@@ -15,8 +14,7 @@ logger = setup_logger(__name__)
 
 
 def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
-    """
-    Validate the incoming backtest job message.
+    """Validate the incoming backtest job message.
 
     Args:
         message (dict[str, Any]): Raw message payload.
@@ -26,6 +24,7 @@ def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
 
     Raises:
         ValueError: If validation fails.
+
     """
     logger.debug("🔍 Validating message schema...")
     if not validate_message_schema(message):
@@ -35,14 +34,14 @@ def validate_input_message(message: dict[str, Any]) -> ValidatedMessage:
 
 
 def run_backtest_job(message: ValidatedMessage) -> dict[str, Any]:
-    """
-    Simulate execution of a backtest job based on input configuration.
+    """Simulate execution of a backtest job based on input configuration.
 
     Args:
         message (ValidatedMessage): Validated job parameters.
 
     Returns:
         dict[str, Any]: Backtest result including simulated metrics.
+
     """
     job_id = message.get("job_id", "unknown")
     strategy = message.get("strategy", "unspecified")
